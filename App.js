@@ -1,28 +1,24 @@
+import React from 'react';
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
-import { COLORS } from './src/theme/colors';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { useFonts } from '@expo-google-fonts/nunito';
+
+import { fontFiles } from './src/theme/fonts';
+import { AppProvider } from './src/context/AppContext';
+import RootNavigator from './src/navigation/RootNavigator';
 
 export default function App() {
+  const [fontsLoaded, fontError] = useFonts(fontFiles);
+
+  // Tunggu font siap supaya teks tidak berkedip dari font bawaan ke Nunito.
+  if (!fontsLoaded && !fontError) return null;
+
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>KatalogKu</Text>
-      <Text style={styles.sub}>Setup berhasil!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <SafeAreaProvider>
+      <AppProvider>
+        <StatusBar style="dark" />
+        <RootNavigator />
+      </AppProvider>
+    </SafeAreaProvider>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: COLORS.background,
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  title: {
-    fontSize: 32, fontWeight: 'bold', color: COLORS.primary
-  },
-  sub: {
-    marginTop: 8, color: COLORS.muted
-  },
-});
