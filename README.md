@@ -39,8 +39,6 @@ Setelah mengubah `.env`, jalankan ulang dengan `npx expo start -c`.
 
 ## Akun demo
 
-**Backend asli:** `[isi email]` / `[isi kata sandi]` (sudah memiliki profil anak). Akun baru juga bisa dibuat lewat layar Daftar (kata sandi minimal 10 karakter).
-
 **Mode demo (`EXPO_PUBLIC_USE_MOCK=true`):** masuk dengan email dan kata sandi apa saja yang tidak kosong. Anak contoh (Aisyah 8 th dan Raka 5 th) beserta riwayatnya sudah tersedia. Data hanya hidup di memori dan kembali ke awal saat aplikasi ditutup.
 
 Barcode contoh untuk mode demo:
