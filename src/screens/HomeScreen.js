@@ -36,6 +36,18 @@ export default function HomeScreen({ navigation }) {
 
   const recent = history.slice(0, 3);
 
+  if (!activeChild) {
+    return (
+      <ScreenContainer edges={['top']}>
+        <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center', padding: 24, gap: 12 }}>
+          <Text style={styles.title}>Belum ada profil anak</Text>
+          <Text style={styles.subtitle}>Tambahkan profil anak dulu untuk mulai memindai jajanan.</Text>
+          <Button title="Tambah anak" onPress={() => navigation.navigate('KelolaAnak')} />
+        </View>
+      </ScreenContainer>
+    );
+  }
+
   return (
     <ScreenContainer scroll edges={['top']}>
       <View style={styles.topRow}>
