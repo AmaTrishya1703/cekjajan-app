@@ -37,8 +37,8 @@ export default function AddChildScreen({ navigation }) {
     setLoading(true);
     try {
       await addChild(name.trim(), age);
-      if (isFirstChild) navigation.navigate('Tabs');
-      else backToManage();
+      // Anak pertama: RootNavigator otomatis pindah ke Beranda (key berubah).
+      if (!isFirstChild) backToManage();
     } catch (e) {
       setErrors({ form: e.message });
       setLoading(false);

@@ -27,6 +27,8 @@ export default function RootNavigator() {
   return (
     <NavigationContainer theme={theme}>
       <Stack.Navigator
+        // key berubah => navigator dibuat ulang (login/keluar, anak pertama tersimpan).
+        key={!user ? 'auth' : kids.length === 0 ? 'onboarding' : 'app'}
         screenOptions={{ headerShown: false }}
         // Akun baru belum punya profil anak: langsung minta mengisi dulu.
         initialRouteName={user && kids.length === 0 ? 'TambahAnak' : undefined}
