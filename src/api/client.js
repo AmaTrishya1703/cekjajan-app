@@ -51,7 +51,7 @@ export async function request(path, { method = 'GET', body, token, query } = {})
     const fallback =
       res.status === 429
         ? 'Terlalu sering mencoba. Tunggu sebentar lalu coba lagi.'
-        : 'Terjadi kesalahan pada server.';
+        : `Terjadi kesalahan pada server (kode ${res.status}).`;
     throw new ApiError(res.status, data?.error?.code ?? 'http_error', data?.error?.message ?? fallback);
   }
 
